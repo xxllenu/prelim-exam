@@ -1,0 +1,124 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
+using System.Linq;
+using System.Net.WebSockets;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Examination__prelim_
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Choose a Program");
+            Console.WriteLine("------------------------------------");
+            Console.WriteLine("1 or A. LeapYear ");
+            Console.WriteLine("2 or B. PHP to USD ");
+            Console.WriteLine("3 or C. Calculator ");
+            Console.WriteLine("------------------------------------");
+
+            Console.Write("What would you like to do?: ");
+            char program = char.Parse(Console.ReadLine());
+            Console.WriteLine();
+
+
+            if (program == '1' || program == 'a' || program == 'A')
+            {
+                int chk_year;
+
+                Console.Write("\n\n");
+                Console.Write("Check whether a given year is leap year or not:\n");
+                Console.Write("----------------------------------------------");
+                Console.Write("\n\n");
+                Console.Write("Input an year : ");
+                chk_year = int.Parse(Console.ReadLine());
+
+                if ((chk_year % 400) == 0)
+                    Console.WriteLine("{0} is a leap year.\n", chk_year);
+                else if ((chk_year % 100) == 0)
+                    Console.WriteLine("{0} is not a leap year.\n", chk_year);
+                else if ((chk_year % 4) == 0)
+                    Console.WriteLine("{0} is a leap year.\n", chk_year);
+                else
+                    Console.WriteLine("{0} is not a leap year.\n", chk_year);
+                Console.ReadKey();
+            }
+            else if (program == '2' || program == 'B' || program == 'b')
+            {
+                Console.WriteLine("Welcome to the PHP to USD converter!");
+                Console.Write("Enter the amount in Philippine Peso (PHP): ");
+                double phpAmount = Convert.ToDouble(Console.ReadLine());
+
+                double exchangeRate = 56.67;
+
+                double usdAmount = phpAmount / exchangeRate;
+
+                Console.WriteLine($"{phpAmount} PHP is equivalent to {usdAmount} USD");
+                Console.WriteLine("\n") ;
+                Console.WriteLine("Thank you for using the converter!");
+                Console.ReadKey();
+            }
+            else if (program == '3' || program == 'c' || program == 'C')
+            {
+                int num1, num2;
+                Console.WriteLine("Calculator");
+                Console.WriteLine("----------------------------------------------");
+                Console.WriteLine("1.Add");
+                Console.WriteLine("2.Substract");
+                Console.WriteLine("3.Multiply");
+                Console.WriteLine("4.Divide");
+
+                Console.Write("Enter a Operation (1-4): ");
+                int ch = Int32.Parse(Console.ReadLine());
+
+                double a, b, c;
+                switch (ch)
+                {
+                    case 1:
+                        Console.Write("Enter a 1st Number:");
+                        a = double.Parse(Console.ReadLine());
+                        Console.Write("Enter a 2nd Number:");
+                        b = double.Parse(Console.ReadLine());
+                        c = a + b;
+                        Console.WriteLine("Sum = {0}", c);
+                        break;
+                    case 2:
+                        Console.Write("Enter a 1st Number:");
+                        a = double.Parse(Console.ReadLine());
+                        Console.Write("Enter a 2nd Number:");
+                        b = double.Parse(Console.ReadLine());
+                        c = a - b;
+                        Console.WriteLine("Difference = {0}", c);
+                        break;
+                    case 3:
+                        Console.Write("Enter a 1st Number:");
+                        a = double.Parse(Console.ReadLine());
+                        Console.Write("Enter a 2nd Number: ");
+                        b = double.Parse(Console.ReadLine());
+                        c = a * b;
+                        Console.WriteLine("Product = {0}", c);
+                        break;
+                    case 4:
+                        Console.Write("Enter a 1st Number:");
+                        a = double.Parse(Console.ReadLine());
+                        Console.Write("Enter a 2nd Number:");
+                        b = double.Parse(Console.ReadLine());
+                        c = a / b;
+                        Console.WriteLine("Quotient = {0}", c);
+                        break;
+                    default:
+                        Console.WriteLine("Invalid Choice");
+                        break;
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("Invalid Input");
+            }
+            Console.ReadKey();
+        }
+    }
+}
